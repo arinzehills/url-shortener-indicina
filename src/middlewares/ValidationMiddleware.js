@@ -4,7 +4,10 @@ class ValidationMiddleware {
   static validateUrl(req, res, next) {
     const { longUrl } = req.body;
 
-    if (!longUrl || !validator.isURL(longUrl)) {
+    if (!longUrl) {
+      return res.status(400).json({ message: "URL to encode is required" });
+    }
+    if (!validator.isURL(longUrl)) {
       return res.status(400).json({ message: "Invalid URL" });
     }
     next();
