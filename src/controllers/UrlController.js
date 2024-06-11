@@ -11,5 +11,14 @@ class UrlController {
       next(error);
     }
   }
+  static async decode(req, res, next) {
+    try {
+      const { shortUrl } = req.body;
+      const longUrl = urlService.decodeService(shortUrl);
+      res.status(200).json({ longUrl });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 module.exports = UrlController;
