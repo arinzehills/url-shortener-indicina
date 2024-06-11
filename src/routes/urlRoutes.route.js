@@ -1,15 +1,9 @@
 const express = require("express");
+const UrlController = require("../controllers/UrlController");
 const router = express.Router();
 
-router.post("/encode", async (req, res) => {
-  res.sendStatus(200);
-});
-router.post("/decode", async (req, res) => {
-  res.sendStatus(200);
-});
-router.get("/statistic/:urlPath", async (req, res) => {
-  console.log(req.params);
-  res.sendStatus(200);
-});
+router.post("/encode", UrlController.encode);
+// router.post('/decode', UrlController.decode);
+// router.get('/statistic/:urlPath', UrlController.getStatistic);
 
 module.exports = router;
