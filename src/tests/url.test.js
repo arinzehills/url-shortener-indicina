@@ -24,5 +24,18 @@ describe("URL Shortener API", () => {
       expect.stringContaining("json")
     );
   });
-  it("should return statistics for a URL", async () => {});
+  it("should return statistics for a URL", async () => {
+    const resEncode = await request(app)
+      .post("/api/encode")
+      .send({ longUrl: "https://indicina.co" });
+
+    const { shortUrl } = resEncode.body;
+    const urlPath = shortUrl.split("/").pop();
+
+    const resStats = await request(app).get(`/api/statistic/${urlPath}`);
+
+    expect(resStats.statusCode).toEqual(200);
+    expect(resStats.body).toHaveProperty("longUrl");
+    expect(resStats.body).toHaveProperty("visits");
+  });
 });
