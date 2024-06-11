@@ -21,6 +21,15 @@ class UrlService {
     urlData.visits += 1;
     return urlData.longUrl;
   }
+  getStatisticService(urlPath) {
+    const urlData = this.urls.get(urlPath);
+    if (!urlData) {
+      const error = new Error("URL not found");
+      error.statusCode = 404;
+      throw error;
+    }
+    return { longUrl: urlData.longUrl, visits: urlData.visits };
+  }
 }
 
 module.exports = UrlService;

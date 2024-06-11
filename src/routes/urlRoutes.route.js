@@ -9,6 +9,6 @@ router.post(
   ValidationMiddleware.validateShortUrl,
   UrlController.decode
 );
-// router.get('/statistic/:urlPath', UrlController.getStatistic);
+router.get("/statistic/:url_path", UrlController.getStatistic);
 
 module.exports = router;

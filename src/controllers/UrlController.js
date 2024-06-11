@@ -20,5 +20,18 @@ class UrlController {
       next(error);
     }
   }
+  static async getStatistic(req, res, next) {
+    try {
+      const { url_path } = req.params;
+
+      if (!url_path) {
+        return res.status(400).json({ message: "url_path is required" });
+      }
+      const stats = urlService.getStatisticService(url_path);
+      res.status(200).json(stats);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 module.exports = UrlController;

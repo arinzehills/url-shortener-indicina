@@ -23,10 +23,8 @@ class ValidationMiddleware {
     const id = shortUrl.split("/").pop();
     console.log("ID", id);
     if (!id || !validator.isURL(shortUrl)) {
-      // if () {
       return res.status(400).json({ message: "Invalid URL" });
     }
-
     next();
   }
 }
