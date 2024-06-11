@@ -7,8 +7,8 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/arinzehills/url-shortener.git
-   cd url-shortener
+   git clone https://github.com/arinzehills/url-shortener-indicina.git
+   cd url-shortener-indicina
    ```
 
 2. Install dependencies:
